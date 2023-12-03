@@ -39,6 +39,7 @@ public class MouseWalkAnimation : MonoBehaviour
         // Move the character to the left
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
+        transform.localScale = new Vector3(-1, 1, 1);
     }
 
     void WalkRight()
@@ -49,6 +50,7 @@ public class MouseWalkAnimation : MonoBehaviour
         // Move the character to the right
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     void StopWalking()
