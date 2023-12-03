@@ -1,27 +1,35 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseWalk : MonoBehaviour
 {
-    public float speed = 5f; // Adjust the speed as needed
+    public float speed = 5f; // ปรับความเร็วตามต้องการ
 
     void Update()
     {
-        // Check if the left mouse button is pressed
+        // ตรวจสอบว่าปุ่มเมาส์ซ้ายถูกคลิก
         if (Input.GetMouseButton(0))
         {
-            // Get the mouse position in world space
-            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0f; // Make sure the Z coordinate is 0
-
-            // Move towards the mouse position
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-            // Optional: You can also rotate the character to face the mouse direction
-            Vector3 direction = targetPosition - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            WalkLeft();
         }
+
+        // ตรวจสอบว่าปุ่มเมาส์ขวาถูกคลิก
+        else if (Input.GetMouseButton(1))
+        {
+            WalkRight();
+        }
+    }
+
+    void WalkLeft()
+    {
+        // ขยับไปทางซ้าย
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+    }
+
+    void WalkRight()
+    {
+        // ขยับไปทางขวา
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 }
