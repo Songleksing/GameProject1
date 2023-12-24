@@ -58,4 +58,13 @@ public class MouseWalkAnimation : MonoBehaviour
         // Stop the walking animation
         animator.Play("iDLE");
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("ชนแบบ OnCollisionEnter2D : " + collision.gameObject.name) 
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("ชนแบบ OnTriggerEnter2D : " + collision.gameObject.name)
+    }
 }
